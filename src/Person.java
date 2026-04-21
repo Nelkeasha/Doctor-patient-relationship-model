@@ -4,16 +4,14 @@ abstract class Person {
     private int age;
     private String email;
     private String gender;
-    private String address;
-    private String phone;
 
-    public Person(String name, int age, String email, String gender, String address, String phone) {
+
+    public Person(String name, int age, String email, String gender) {
         this.name = name;
         this.age = age;
         this.email = email;
         this.gender = gender;
-        this.address = address;
-        this.phone = phone;
+
     }
 
     public String getName() {
@@ -48,21 +46,7 @@ abstract class Person {
         this.gender = gender;
     }
 
-    public String getAddress() {
-        return address;
-    }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     abstract void describe();
 }

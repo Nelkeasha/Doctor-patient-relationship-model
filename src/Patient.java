@@ -4,11 +4,15 @@ import java.util.List;
 public class Patient extends Person {
 
     private String patientId;
+    private String phone;
+    private String address;
     private Doctor assignedDoctor;
     private List<MedicalRecord> medicalHistory;
 
     public Patient(String patientId, String name, int age, String email, String gender, String address, String phone) {
-        super(name, age, email, gender, address, phone);
+        super(name, age, email, gender);
+        this.phone = phone;
+        this.address = address;
         this.patientId =  patientId;
         this.assignedDoctor = null;
         this.medicalHistory = new ArrayList<>();
@@ -17,6 +21,14 @@ public class Patient extends Person {
 
     public String getPatientId() {
         return patientId;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public Doctor getAssignedDoctor() {
