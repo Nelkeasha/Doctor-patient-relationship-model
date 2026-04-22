@@ -1,3 +1,7 @@
+package models;
+
+import exceptions.InvalidPatientException;
+
 abstract class Person {
 
     private String name;
@@ -7,6 +11,18 @@ abstract class Person {
 
 
     public Person(String name, int age, String email, String gender) {
+
+        // Validation
+        if (name == null || name.trim().isEmpty()) {
+            throw new InvalidPatientException("Name cannot be empty.");
+        }
+        if (age <= 0) {
+            throw new InvalidPatientException("Age must be a positive number.");
+        }
+        if (email == null || email.trim().isEmpty()) {
+            throw new InvalidPatientException("Email number cannot be empty.");
+        }
+
         this.name = name;
         this.age = age;
         this.email = email;
@@ -48,5 +64,5 @@ abstract class Person {
 
 
 
-    abstract void describe();
+    public abstract void describe();
 }

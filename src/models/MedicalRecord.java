@@ -1,4 +1,6 @@
-class MedicalRecord {
+package models;
+
+public class MedicalRecord {
     private String date;
     private String diagnosis;
     private Prescription prescription;
@@ -21,7 +23,7 @@ class MedicalRecord {
     public void display() {
         System.out.println("--- Medical Record ---");
         System.out.println("Date      : " + date);
-        System.out.println("Doctor    : Dr. " + doctorName);
+        System.out.println("models.Doctor    : Dr. " + doctorName);
         System.out.println("Diagnosis : " + diagnosis);
         if (prescription != null) {
             prescription.display();
