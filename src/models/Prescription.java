@@ -42,6 +42,8 @@ public class Prescription {
     public String getMedicine() { return medicine; }
     public String getDosage() { return dosage; }
     public String getInstructions() { return instructions; }
+    public Doctor getDoctor() { return doctor; }
+    public Patient getPatient() { return patient; }
 
     public void display() {
         System.out.println("--- models.Prescription ---");

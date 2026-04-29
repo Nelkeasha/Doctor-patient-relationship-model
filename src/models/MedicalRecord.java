@@ -18,6 +18,7 @@ public class MedicalRecord {
     public String getDate() { return date; }
     public String getDiagnosis() { return diagnosis; }
     public Prescription getPrescription() { return prescription; }
+    public String getDoctorName() { return doctorName; }
 
 
     public void display() {

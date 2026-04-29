@@ -30,17 +30,14 @@ public class Appointment {
         this.doctor = doctor;
         this.patient = patient;
         this.date = date;
-        this.status = "Scheduled";
+        this.status = (status == null || status.trim().isEmpty()) ? "Scheduled" : status;
     }
 
 
-    public String getDate() {
-        return date;
-    }
-
-    public String getStatus() {
-        return status;
-    }
+    public String getDate() { return date; }
+    public String getStatus() { return status; }
+    public Doctor getDoctor() { return doctor; }
+    public Patient getPatient() { return patient; }
 
     public void confirmAppointment() {
         if (this.status.equals("Cancelled")) {
