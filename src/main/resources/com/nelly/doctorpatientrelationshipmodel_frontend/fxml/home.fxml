@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.nelly.doctorpatientrelationshipmodel_frontend.controllers.HomeController"
+            prefWidth="1280" prefHeight="820">
+
+    <!-- ═══ NAV BAR ═══ -->
+    <top>
+        <HBox styleClass="nav-bar" spacing="0">
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="M" styleClass="nav-logo-icon"/>
+                <Label text="Medicare" styleClass="nav-logo-text"/>
+            </HBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <HBox spacing="4" alignment="CENTER">
+                <Button text="Home"     styleClass="nav-link-active" onAction="#scrollToTop"/>
+                <Button text="About"    styleClass="nav-link"        onAction="#scrollToAbout"/>
+                <Button text="Services" styleClass="nav-link"        onAction="#scrollToServices"/>
+                <Button text="Doctors"  styleClass="nav-link"        onAction="#scrollToDoctors"/>
+            </HBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Get Started" styleClass="btn-secondary" onAction="#goToLogin"/>
+                <Button text="Contact Us"  styleClass="btn-dark"      onAction="#goToLogin"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- ═══ MAIN SCROLL ═══ -->
+    <center>
+        <ScrollPane fx:id="mainScroll" styleClass="main-scroll"
+                    fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+            <VBox spacing="0">
+
+                <!-- ── HERO ── -->
+                <HBox styleClass="hero-section" spacing="60" alignment="CENTER">
+                    <VBox spacing="20" HBox.hgrow="ALWAYS" maxWidth="540" alignment="CENTER_LEFT">
+                        <HBox styleClass="hero-tag-box" maxWidth="160">
+                            <Label text="Next step  →" styleClass="hero-tag-text"/>
+                        </HBox>
+                        <Label text="Discover Our Mission&#10;and Values in&#10;Patient-Centered&#10;Healthcare"
+                               styleClass="hero-title" wrapText="true" maxWidth="510"/>
+                        <Label text="We are dedicated to providing exceptional healthcare through a compassionate, patient-centered approach. Your health, our priority — always."
+                               styleClass="hero-subtitle" wrapText="true" maxWidth="450"/>
+                        <HBox spacing="12" alignment="CENTER_LEFT" style="-fx-padding: 8 0 0 0;">
+                            <Button text="Contact us  →" styleClass="btn-white"   onAction="#goToLogin"/>
+                            <Button text="Learn More"     styleClass="btn-outline-white" onAction="#scrollToAbout"/>
+                        </HBox>
+                    </VBox>
+                    <StackPane HBox.hgrow="NEVER">
+                        <VBox styleClass="hero-image-box" alignment="CENTER" spacing="10">
+                            <StackPane styleClass="hero-image-placeholder">
+                                <VBox alignment="CENTER" spacing="10">
+                                    <Label text="👨‍⚕️👩‍⚕️👩‍⚕️" style="-fx-font-size: 52px;"/>
+                                    <Label text="Our Expert Medical Team"
+                                           style="-fx-text-fill: #6D28D9; -fx-font-weight: bold; -fx-font-size: 15px;"/>
+                                    <Label text="100% Board-Certified Professionals"
+                                           style="-fx-text-fill: #8B5CF6; -fx-font-size: 13px;"/>
+                                </VBox>
+                            </StackPane>
+                        </VBox>
+                    </StackPane>
+                </HBox>
+
+                <!-- ── ABOUT / MISSION ── -->
+                <HBox fx:id="aboutSection" spacing="70" alignment="CENTER"
+                      style="-fx-background-color: #F8F9FF; -fx-padding: 70 80 70 80;">
+                    <VBox spacing="18" HBox.hgrow="ALWAYS" maxWidth="500" alignment="CENTER_LEFT">
+                        <Label text="About Medicare" styleClass="section-tag"/>
+                        <Label text="Let's know about our main goal"
+                               styleClass="section-title" wrapText="true" maxWidth="440"/>
+                        <Label text="We are committed to upholding the highest standards of medical excellence while ensuring each patient feels valued and heard."
+                               styleClass="section-subtitle" wrapText="true" maxWidth="420"/>
+                        <GridPane hgap="24" vgap="12" style="-fx-padding: 8 0 0 0;">
+                            <!-- col 0 -->
+                            <HBox spacing="10" alignment="CENTER_LEFT" GridPane.rowIndex="0" GridPane.columnIndex="0">
+                                <StackPane styleClass="check-circle"><Label text="✓" styleClass="check-mark"/></StackPane>
+                                <Label text="Accessible Information" styleClass="check-text"/>
+                            </HBox>
+                            <HBox spacing="10" alignment="CENTER_LEFT" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                                <StackPane styleClass="check-circle"><Label text="✓" styleClass="check-mark"/></StackPane>
+                                <Label text="Patient Engagement" styleClass="check-text"/>
+                            </HBox>
+                            <HBox spacing="10" alignment="CENTER_LEFT" GridPane.rowIndex="2" GridPane.columnIndex="0">
+                                <StackPane styleClass="check-circle"><Label text="✓" styleClass="check-mark"/></StackPane>
+                                <Label text="Health Education" styleClass="check-text"/>
+                            </HBox>
+                            <!-- col 1 -->
+                            <HBox spacing="10" alignment="CENTER_LEFT" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                                <StackPane styleClass="check-circle"><Label text="✓" styleClass="check-mark"/></StackPane>
+                                <Label text="Building Trust" styleClass="check-text"/>
+                            </HBox>
+                            <HBox spacing="10" alignment="CENTER_LEFT" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                                <StackPane styleClass="check-circle"><Label text="✓" styleClass="check-mark"/></StackPane>
+                                <Label text="Community Involvement" styleClass="check-text"/>
+                            </HBox>
+                            <HBox spacing="10" alignment="CENTER_LEFT" GridPane.rowIndex="2" GridPane.columnIndex="1">
+                                <StackPane styleClass="check-circle"><Label text="✓" styleClass="check-mark"/></StackPane>
+                                <Label text="Security and Privacy" styleClass="check-text"/>
+                            </HBox>
+                        </GridPane>
+                    </VBox>
+                    <StackPane styleClass="mission-image-box" HBox.hgrow="NEVER" alignment="CENTER">
+                        <VBox alignment="CENTER" spacing="14">
+                            <Label text="👨‍⚕️" style="-fx-font-size: 80px;"/>
+                            <Label text="Dr. Healthcare"
+                                   style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #7C3AED;"/>
+                            <Label text="Chief Medical Officer"
+                                   style="-fx-font-size: 13px; -fx-text-fill: #9CA3AF;"/>
+                        </VBox>
+                    </StackPane>
+                </HBox>
+
+                <!-- ── SERVICES ── -->
+                <VBox fx:id="servicesSection" styleClass="section-white" spacing="40" alignment="CENTER">
+                    <VBox alignment="CENTER" spacing="10">
+                        <Label text="Our Services" styleClass="section-tag"/>
+                        <Label text="Your Trusted Healthcare Providers" styleClass="section-title"/>
+                        <Label text="Comprehensive medical services tailored to your unique healthcare needs."
+                               styleClass="section-subtitle" maxWidth="480" alignment="CENTER" textAlignment="CENTER"/>
+                    </VBox>
+                    <GridPane hgap="20" vgap="20" alignment="CENTER">
+                        <!-- Row 0 -->
+                        <VBox styleClass="service-card" spacing="12" prefWidth="256" GridPane.rowIndex="0" GridPane.columnIndex="0">
+                            <StackPane styleClass="service-icon-bg"><Label text="🏃" styleClass="service-icon"/></StackPane>
+                            <Label text="Path to Wellness" styleClass="service-card-title"/>
+                            <Label text="Personalized wellness plans to keep you active and healthy year-round." styleClass="service-card-desc" wrapText="true"/>
+                        </VBox>
+                        <VBox styleClass="service-card" spacing="12" prefWidth="256" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                            <StackPane styleClass="service-icon-bg-pink"><Label text="🧠" styleClass="service-icon"/></StackPane>
+                            <Label text="Mental Health Services" styleClass="service-card-title"/>
+                            <Label text="Counseling, therapy, and emotional support for your mental wellbeing." styleClass="service-card-desc" wrapText="true"/>
+                        </VBox>
+                        <VBox styleClass="service-card" spacing="12" prefWidth="256" GridPane.rowIndex="0" GridPane.columnIndex="2">
+                            <StackPane styleClass="service-icon-bg-blue"><Label text="🔬" styleClass="service-icon"/></StackPane>
+                            <Label text="Diagnostic Services" styleClass="service-card-title"/>
+                            <Label text="Advanced diagnostics and imaging for accurate, fast detection." styleClass="service-card-desc" wrapText="true"/>
+                        </VBox>
+                        <VBox styleClass="service-card" spacing="12" prefWidth="256" GridPane.rowIndex="0" GridPane.columnIndex="3">
+                            <StackPane styleClass="service-icon-bg-green"><Label text="💊" styleClass="service-icon"/></StackPane>
+                            <Label text="Beyond Medicine" styleClass="service-card-title"/>
+                            <Label text="Holistic treatment combining traditional and modern medicine." styleClass="service-card-desc" wrapText="true"/>
+                        </VBox>
+                        <!-- Row 1 -->
+                        <VBox styleClass="service-card" spacing="12" prefWidth="256" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                            <StackPane styleClass="service-icon-bg-green"><Label text="👶" styleClass="service-icon"/></StackPane>
+                            <Label text="Pediatric Care" styleClass="service-card-title"/>
+                            <Label text="Specialized care for children from infancy through adolescence." styleClass="service-card-desc" wrapText="true"/>
+                        </VBox>
+                        <VBox styleClass="service-card" spacing="12" prefWidth="256" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                            <StackPane styleClass="service-icon-bg"><Label text="📱" styleClass="service-icon"/></StackPane>
+                            <Label text="Telehealth Services" styleClass="service-card-title"/>
+                            <Label text="Remote consultations and virtual appointments at your convenience." styleClass="service-card-desc" wrapText="true"/>
+                        </VBox>
+                        <VBox styleClass="service-card" spacing="12" prefWidth="256" GridPane.rowIndex="1" GridPane.columnIndex="2">
+                            <StackPane styleClass="service-icon-bg-pink"><Label text="⭐" styleClass="service-icon"/></StackPane>
+                            <Label text="Future of Care" styleClass="service-card-title"/>
+                            <Label text="Cutting-edge treatments leveraging AI and medical innovation." styleClass="service-card-desc" wrapText="true"/>
+                        </VBox>
+                        <VBox styleClass="service-card" spacing="12" prefWidth="256" GridPane.rowIndex="1" GridPane.columnIndex="3">
+                            <StackPane styleClass="service-icon-bg-blue"><Label text="🌿" styleClass="service-icon"/></StackPane>
+                            <Label text="Holistic Health" styleClass="service-card-title"/>
+                            <Label text="Integrative approach combining body, mind, and spiritual wellness." styleClass="service-card-desc" wrapText="true"/>
+                        </VBox>
+                    </GridPane>
+                </VBox>
+
+                <!-- ── STATS ── -->
+                <HBox styleClass="stats-section" spacing="0" alignment="CENTER">
+                    <VBox styleClass="stat-item" HBox.hgrow="ALWAYS" alignment="CENTER" spacing="6">
+                        <Label text="100%" styleClass="stat-value"/>
+                        <Label text="Doctors Certified" styleClass="stat-label"/>
+                        <Label text="Board-certified professionals" styleClass="stat-desc"/>
+                    </VBox>
+                    <Region styleClass="stat-divider"/>
+                    <VBox styleClass="stat-item" HBox.hgrow="ALWAYS" alignment="CENTER" spacing="6">
+                        <Label text="25M+" styleClass="stat-value"/>
+                        <Label text="Happy Global Users" styleClass="stat-label"/>
+                        <Label text="Patients served worldwide" styleClass="stat-desc"/>
+                    </VBox>
+                    <Region styleClass="stat-divider"/>
+                    <VBox styleClass="stat-item" HBox.hgrow="ALWAYS" alignment="CENTER" spacing="6">
+                        <Label text="99%" styleClass="stat-value"/>
+                        <Label text="Satisfying Treatment" styleClass="stat-label"/>
+                        <Label text="Patient satisfaction rate" styleClass="stat-desc"/>
+                    </VBox>
+                </HBox>
+
+                <!-- ── DOCTORS ── -->
+                <VBox fx:id="doctorsSection" styleClass="section-light" spacing="40" alignment="CENTER">
+                    <VBox alignment="CENTER" spacing="10">
+                        <Label text="Our Team" styleClass="section-tag"/>
+                        <Label text="Meet our expert doctors" styleClass="section-title"/>
+                        <Label text="We aim to share information about our highly qualified specialists."
+                               styleClass="section-subtitle" maxWidth="480" alignment="CENTER"/>
+                    </VBox>
+                    <HBox fx:id="doctorsRow" spacing="20" alignment="CENTER"/>
+                </VBox>
+
+                <!-- ── CTA ── -->
+                <VBox styleClass="cta-outer" alignment="CENTER">
+                    <VBox styleClass="cta-section" spacing="20" alignment="CENTER">
+                        <Label text="Bring your customer services to&#10;the next level of excellence."
+                               styleClass="cta-title" alignment="CENTER" textAlignment="CENTER" wrapText="true"/>
+                        <Label text="Schedule your appointment today and experience world-class healthcare."
+                               styleClass="cta-subtitle" alignment="CENTER" maxWidth="480" textAlignment="CENTER"/>
+                        <HBox spacing="14" alignment="CENTER" style="-fx-padding: 10 0 0 0;">
+                            <Button text="Make a Schedule  →" styleClass="btn-white"         onAction="#goToLogin"/>
+                            <Button text="Learn More"          styleClass="btn-outline-white" onAction="#scrollToAbout"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+
+                <!-- ── FOOTER ── -->
+                <HBox styleClass="footer" spacing="60" alignment="CENTER_LEFT">
+                    <VBox spacing="12" HBox.hgrow="ALWAYS">
+                        <HBox spacing="8" alignment="CENTER_LEFT">
+                            <Label text="M" styleClass="nav-logo-icon"/>
+                            <Label text="Medicare"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                        </HBox>
+                        <Label text="Patient-centered healthcare&#10;for a healthier tomorrow."
+                               styleClass="footer-text" wrapText="true"/>
+                    </VBox>
+                    <VBox spacing="8">
+                        <Label text="Quick Links"
+                               style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;"/>
+                        <Button text="Home"     styleClass="footer-link" onAction="#scrollToTop"/>
+                        <Button text="Services" styleClass="footer-link" onAction="#scrollToServices"/>
+                        <Button text="Doctors"  styleClass="footer-link" onAction="#scrollToDoctors"/>
+                    </VBox>
+                    <VBox spacing="8">
+                        <Label text="Contact"
+                               style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;"/>
+                        <Label text="📧  info@medicare.health"    styleClass="footer-text"/>
+                        <Label text="📞  +1 (800) MEDICARE"       styleClass="footer-text"/>
+                        <Label text="📍  Healthcare Ave, Medical City" styleClass="footer-text"/>
+                    </VBox>
+                    <VBox spacing="6">
+                        <Label text="© 2026 Medicare Platform" styleClass="footer-text"/>
+                        <Label text="All rights reserved."      styleClass="footer-text"/>
+                    </VBox>
+                </HBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

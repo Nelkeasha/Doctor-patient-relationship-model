@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.nelly.doctorpatientrelationshipmodel_frontend.controllers.PatientDashboardController"
+      prefWidth="1280" prefHeight="820"
+      style="-fx-background-color: #F1F5F9;">
+
+    <!-- ═══ SIDEBAR ═══ -->
+    <VBox styleClass="sidebar" spacing="4">
+        <!-- Logo -->
+        <HBox spacing="8" alignment="CENTER_LEFT" style="-fx-padding: 0 0 16 8;">
+            <Label text="M" styleClass="nav-logo-icon"/>
+            <Label text="Medicare" styleClass="sidebar-logo-text"/>
+        </HBox>
+
+        <!-- User info card -->
+        <VBox styleClass="sidebar-user-box">
+            <StackPane style="-fx-background-color: #7C3AED; -fx-background-radius: 50; -fx-min-width: 42; -fx-min-height: 42; -fx-max-width: 42; -fx-max-height: 42; -fx-alignment: center;">
+                <Label fx:id="sidebarInitials" text="PT"
+                       style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+            </StackPane>
+            <Label fx:id="sidebarName" text="Patient Name" styleClass="sidebar-user-name"/>
+            <Label text="Patient" styleClass="sidebar-user-role"/>
+        </VBox>
+
+        <Label text="MAIN MENU" styleClass="sidebar-section-label"/>
+        <Button text="🏠  Overview"         styleClass="sidebar-btn-active" onAction="#showOverview"   maxWidth="Infinity"/>
+        <Button text="📅  Appointments"      styleClass="sidebar-btn"        onAction="#showAppointments" maxWidth="Infinity"/>
+        <Button text="📋  Medical Records"   styleClass="sidebar-btn"        onAction="#showRecords"    maxWidth="Infinity"/>
+        <Button text="👨‍⚕️  My Doctor"         styleClass="sidebar-btn"        onAction="#showDoctor"     maxWidth="Infinity"/>
+
+        <Label text="ACTIONS" styleClass="sidebar-section-label"/>
+        <Button text="➕  Book Appointment"  styleClass="sidebar-btn"        onAction="#goBookAppointment" maxWidth="Infinity"/>
+
+        <Region VBox.vgrow="ALWAYS"/>
+        <Button text="🚪  Logout"            styleClass="sidebar-btn"        onAction="#logout"         maxWidth="Infinity"
+                style="-fx-text-fill: #EF4444;"/>
+    </VBox>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <ScrollPane HBox.hgrow="ALWAYS" fitToWidth="true" hbarPolicy="NEVER"
+                style="-fx-background-color: #F1F5F9; -fx-border-color: transparent;">
+        <VBox styleClass="dashboard-content" spacing="24">
+
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT">
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label fx:id="welcomeLabel" text="Welcome back, Patient!"  styleClass="dashboard-title"/>
+                    <Label fx:id="dateLabel"    text="Here's your health overview today." styleClass="dashboard-subtitle"/>
+                </VBox>
+                <Button text="➕ Book Appointment" styleClass="btn-primary" onAction="#goBookAppointment"/>
+            </HBox>
+
+            <!-- Stat cards -->
+            <HBox spacing="20">
+                <VBox styleClass="dash-stat-card" HBox.hgrow="ALWAYS" spacing="10">
+                    <StackPane styleClass="dash-icon-purple"><Label text="📅"/></StackPane>
+                    <Label fx:id="apptCountLabel"  text="0" styleClass="dash-stat-value"/>
+                    <Label text="Total Appointments" styleClass="dash-stat-label"/>
+                </VBox>
+                <VBox styleClass="dash-stat-card" HBox.hgrow="ALWAYS" spacing="10">
+                    <StackPane styleClass="dash-icon-blue"><Label text="👨‍⚕️"/></StackPane>
+                    <Label fx:id="doctorNameLabel" text="—" styleClass="dash-stat-value"
+                           style="-fx-font-size: 18px;"/>
+                    <Label text="Assigned Doctor" styleClass="dash-stat-label"/>
+                </VBox>
+                <VBox styleClass="dash-stat-card" HBox.hgrow="ALWAYS" spacing="10">
+                    <StackPane styleClass="dash-icon-green"><Label text="📋"/></StackPane>
+                    <Label fx:id="recordCountLabel" text="0" styleClass="dash-stat-value"/>
+                    <Label text="Medical Records" styleClass="dash-stat-label"/>
+                </VBox>
+                <VBox styleClass="dash-stat-card" HBox.hgrow="ALWAYS" spacing="10">
+                    <StackPane styleClass="dash-icon-orange"><Label text="💊"/></StackPane>
+                    <Label fx:id="prescCountLabel"  text="0" styleClass="dash-stat-value"/>
+                    <Label text="Prescriptions" styleClass="dash-stat-label"/>
+                </VBox>
+            </HBox>
+
+            <!-- Appointments panel -->
+            <VBox styleClass="data-panel">
+                <HBox styleClass="panel-header" spacing="12" alignment="CENTER_LEFT">
+                    <Label text="📅  My Appointments" styleClass="panel-title" HBox.hgrow="ALWAYS"/>
+                    <Button text="Book New" styleClass="btn-primary"
+                            style="-fx-padding: 7 16 7 16; -fx-font-size: 13px;"
+                            onAction="#goBookAppointment"/>
+                </HBox>
+                <VBox styleClass="panel-body">
+                    <TableView fx:id="appointmentTable" styleClass="styled-table"
+                               prefHeight="240" maxWidth="Infinity">
+                        <columns>
+                            <TableColumn fx:id="apptDoctorCol"  text="Doctor"      prefWidth="220"/>
+                            <TableColumn fx:id="apptDateCol"    text="Date"        prefWidth="180"/>
+                            <TableColumn fx:id="apptStatusCol"  text="Status"      prefWidth="140"/>
+                            <TableColumn fx:id="apptActionCol"  text="Action"      prefWidth="140"/>
+                        </columns>
+                        <placeholder><Label text="No appointments yet. Book one above!" style="-fx-text-fill: #9CA3AF;"/></placeholder>
+                    </TableView>
+                </VBox>
+            </VBox>
+
+            <!-- Medical records panel -->
+            <VBox styleClass="data-panel">
+                <HBox styleClass="panel-header" alignment="CENTER_LEFT">
+                    <Label text="📋  Medical Records" styleClass="panel-title"/>
+                </HBox>
+                <VBox styleClass="panel-body">
+                    <TableView fx:id="recordTable" styleClass="styled-table"
+                               prefHeight="220" maxWidth="Infinity">
+                        <columns>
+                            <TableColumn fx:id="recDateCol"      text="Date"       prefWidth="160"/>
+                            <TableColumn fx:id="recDoctorCol"    text="Doctor"     prefWidth="200"/>
+                            <TableColumn fx:id="recDiagCol"      text="Diagnosis"  prefWidth="260"/>
+                            <TableColumn fx:id="recMedCol"       text="Medicine"   prefWidth="180"/>
+                        </columns>
+                        <placeholder><Label text="No medical records found." style="-fx-text-fill: #9CA3AF;"/></placeholder>
+                    </TableView>
+                </VBox>
+            </VBox>
+
+        </VBox>
+    </ScrollPane>
+</HBox>

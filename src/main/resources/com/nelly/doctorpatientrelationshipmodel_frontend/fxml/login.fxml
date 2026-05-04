@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.nelly.doctorpatientrelationshipmodel_frontend.controllers.LoginController"
+      prefWidth="1280" prefHeight="820">
+
+    <!-- ═══ LEFT — Branding ═══ -->
+    <VBox styleClass="login-left" HBox.hgrow="ALWAYS" spacing="28" alignment="CENTER" maxWidth="520">
+        <HBox spacing="10" alignment="CENTER">
+            <Label text="M" styleClass="nav-logo-icon"
+                   style="-fx-font-size: 18px; -fx-padding: 8 12 8 12;"/>
+            <Label text="Medicare"
+                   style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+        </HBox>
+        <Label text="Patient-Centered Healthcare" styleClass="login-brand-title"/>
+        <Label text="Join thousands of patients and doctors who trust Medicare for world-class, compassionate care — anytime, anywhere."
+               styleClass="login-brand-desc" wrapText="true" maxWidth="360"/>
+
+        <VBox spacing="14" maxWidth="300" style="-fx-padding: 10 0 0 0;">
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Label text="✓" style="-fx-text-fill: #A78BFA; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Label text="Streamlined appointment scheduling" style="-fx-text-fill: #EDE9FE; -fx-font-size: 14px;"/>
+            </HBox>
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Label text="✓" style="-fx-text-fill: #A78BFA; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Label text="Secure medical records management" style="-fx-text-fill: #EDE9FE; -fx-font-size: 14px;"/>
+            </HBox>
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Label text="✓" style="-fx-text-fill: #A78BFA; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Label text="Expert team of certified doctors" style="-fx-text-fill: #EDE9FE; -fx-font-size: 14px;"/>
+            </HBox>
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Label text="✓" style="-fx-text-fill: #A78BFA; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Label text="Mental health and holistic care" style="-fx-text-fill: #EDE9FE; -fx-font-size: 14px;"/>
+            </HBox>
+        </VBox>
+
+        <Button text="← Back to Home" styleClass="btn-outline-white"
+                onAction="#goHome" style="-fx-padding: 8 18 8 18; -fx-font-size: 13px;"/>
+    </VBox>
+
+    <!-- ═══ RIGHT — Form ═══ -->
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                style="-fx-background-color: white; -fx-border-color: transparent;"
+                HBox.hgrow="ALWAYS">
+        <VBox styleClass="login-right" spacing="0" alignment="CENTER" minWidth="480">
+
+            <Label text="Welcome Back" styleClass="login-form-title"/>
+            <Label fx:id="formSubtitle" text="Sign in to your Medicare account"
+                   styleClass="login-form-subtitle" style="-fx-padding: 6 0 20 0;"/>
+
+            <!-- Role toggle -->
+            <HBox styleClass="toggle-group-box" alignment="CENTER" style="-fx-padding: 0 0 24 0;">
+                <Button fx:id="patientToggle" text="Patient"
+                        styleClass="toggle-active" onAction="#selectPatient"/>
+                <Button fx:id="doctorToggle"  text="Doctor"
+                        styleClass="toggle-inactive" onAction="#selectDoctor"/>
+            </HBox>
+
+            <!-- Mode toggle (Login / Register) -->
+            <HBox spacing="0" alignment="CENTER" style="-fx-padding: 0 0 22 0;">
+                <Button fx:id="loginModeBtn"    text="Sign In"
+                        styleClass="toggle-active"   onAction="#switchToLogin"
+                        style="-fx-min-width: 110;"/>
+                <Button fx:id="registerModeBtn" text="Register"
+                        styleClass="toggle-inactive" onAction="#switchToRegister"
+                        style="-fx-min-width: 110;"/>
+            </HBox>
+
+            <!-- ── COMMON FIELDS ── -->
+            <VBox spacing="14" maxWidth="380" fillWidth="true">
+
+                <!-- Name (register only) -->
+                <VBox fx:id="nameBox" spacing="4">
+                    <Label text="Full Name" styleClass="form-field-label"/>
+                    <TextField fx:id="nameField" promptText="e.g. Jane Smith"
+                               styleClass="text-field-styled"/>
+                </VBox>
+
+                <!-- Email -->
+                <VBox spacing="4">
+                    <Label text="Email Address" styleClass="form-field-label"/>
+                    <TextField fx:id="emailField" promptText="you@example.com"
+                               styleClass="text-field-styled"/>
+                </VBox>
+
+                <!-- Age (register only) -->
+                <VBox fx:id="ageBox" spacing="4">
+                    <Label text="Age" styleClass="form-field-label"/>
+                    <TextField fx:id="ageField" promptText="e.g. 32"
+                               styleClass="text-field-styled"/>
+                </VBox>
+
+                <!-- Gender (register only) -->
+                <VBox fx:id="genderBox" spacing="4">
+                    <Label text="Gender" styleClass="form-field-label"/>
+                    <ComboBox fx:id="genderCombo" promptText="Select gender"
+                              styleClass="combo-styled" maxWidth="Infinity"/>
+                </VBox>
+
+                <!-- ── Patient-only register fields ── -->
+                <VBox fx:id="patientExtraBox" spacing="14">
+                    <VBox spacing="4">
+                        <Label text="Phone Number" styleClass="form-field-label"/>
+                        <TextField fx:id="phoneField" promptText="+1 (555) 000-0000"
+                                   styleClass="text-field-styled"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Address" styleClass="form-field-label"/>
+                        <TextField fx:id="addressField" promptText="123 Main St, City"
+                                   styleClass="text-field-styled"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Assign Doctor (optional)" styleClass="form-field-label"/>
+                        <ComboBox fx:id="doctorCombo" promptText="Select your doctor"
+                                  styleClass="combo-styled" maxWidth="Infinity"/>
+                    </VBox>
+                </VBox>
+
+                <!-- ── Doctor-only register fields ── -->
+                <VBox fx:id="doctorExtraBox" spacing="4">
+                    <Label text="Specialty" styleClass="form-field-label"/>
+                    <TextField fx:id="specialtyField" promptText="e.g. Cardiology"
+                               styleClass="text-field-styled"/>
+                </VBox>
+
+                <!-- Error message -->
+                <Label fx:id="errorLabel" text="" styleClass="form-error" wrapText="true" maxWidth="380"/>
+
+                <!-- Submit -->
+                <Button fx:id="submitBtn" text="Sign In" styleClass="btn-primary"
+                        onAction="#handleSubmit" maxWidth="Infinity"
+                        style="-fx-pref-height: 46; -fx-font-size: 15px;"/>
+
+                <!-- Footer links -->
+                <HBox alignment="CENTER" spacing="6" style="-fx-padding: 8 0 0 0;">
+                    <Label fx:id="switchLabel" text="Don't have an account?"
+                           style="-fx-font-size: 13px; -fx-text-fill: #6B7280;"/>
+                    <Button fx:id="switchBtn" text="Register here"
+                            styleClass="form-link" onAction="#switchToRegister"/>
+                </HBox>
+
+            </VBox>
+        </VBox>
+    </ScrollPane>
+</HBox>
